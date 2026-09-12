@@ -1,0 +1,86 @@
+-- 1. ONE table for all logins. Who is allowed to use the system? 
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('ADMIN', 'TEACHER', 'STUDENT') NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    account_status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE'
+);
+
+-- 2. A flat list of subjects. 
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL UNIQUE
+    image_path VARCHAR(255) NULL       
+);
+
+-- 3. This teacher has been assigned to teach this course."
+CREATE TABLE teacher_courses (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+    teacher_user_id INT NOT NULL,
+    course_id INT NOT NULL,
+    assigned_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (teacher_user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE,
+    
+    -- This prevents duplicate assignments
+    CONSTRAINT uq_teacher_course UNIQUE (teacher_user_id, course_id) 
+);
+   
+    
+     
+-- 4. The Quiz Header; A teacher created a quiz for a particular course."
+CREATE TABLE quizzes (
+    quiz_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    creator_user_id INT NOT NULL, -- Links to users table (Teacher)
+    access_code Null
+    title VARCHAR(150) NOT NULL,
+    duration_minutes INT NOT NULL,
+    status ENUM('DRAFT', 'PUBLISHED') DEFAULT 'DRAFT',
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (creator_user_id) REFERENCES users(user_id)
+);
+
+-- 5. The Questions; What questions make up this quiz?
+CREATE TABLE quiz_questions (
+    question_id INT AUTO_INCREMENT PRIMARY KEY,
+    quiz_id INT NOT NULL,
+    question_text TEXT NOT NULL,
+    option_a VARCHAR(255) NOT NULL,
+    option_b VARCHAR(255) NOT NULL,
+    option_c VARCHAR(255) NOT NULL,
+    option_d VARCHAR(255) NOT NULL,
+    correct_option ENUM('A','B','C','D') NOT NULL,
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id) ON DELETE CASCADE
+);
+
+-- 6. The Student's Attempt Header;Which student attempted which quiz, and what was the result?
+CREATE TABLE quiz_attempts (
+    attempt_id INT AUTO_INCREMENT PRIMARY KEY,
+    quiz_id INT NOT NULL,
+    student_user_id INT NOT NULL, -- Links to users table (Student)
+    score INT DEFAULT 0,
+    start_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_submitted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (quiz_id) REFERENCES quizzes(quiz_id),
+    FOREIGN KEY (student_user_id) REFERENCES users(user_id)
+);
+
+-- 7. The Student's Actual Answers (Crucial for grading);How did the student answer every question?
+CREATE TABLE quiz_attempt_answers (
+    answer_id INT AUTO_INCREMENT PRIMARY KEY,
+    attempt_id INT NOT NULL,
+    question_id INT NOT NULL,
+    selected_option ENUM('A','B','C','D') NOT NULL,
+    is_correct BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (attempt_id) REFERENCES quiz_attempts(attempt_id) ON DELETE CASCADE,
+    FOREIGN KEY (question_id) REFERENCES quiz_questions(question_id) ON DELETE CASCADE
+);
+
+ALTER TABLE quizzes 
+MODIFY COLUMN status ENUM('DRAFT', 'PUBLISHED', 'CLOSED') DEFAULT 'DRAFT';  
+
+

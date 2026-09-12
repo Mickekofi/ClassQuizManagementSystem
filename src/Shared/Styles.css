@@ -1,0 +1,129 @@
+﻿/* =========================================
+   1. GLOBAL VARIABLES & BASE STYLES
+   ========================================= */
+:root {
+    /* Brand Colors */
+    --brand-primary: #8B0000; /* Dark Red */
+    --brand-secondary: #000040; /* Dark Blue */
+    --brand-background: #F5F5F5; /* WhiteSmoke */
+    --brand-text: #333333; /* Dark Gray */
+    --brand-white: #FFFFFF; /* White */
+}
+
+body {
+    background-color: var(--brand-background);
+    color: var(--brand-text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   2. BUTTON UTILITIES (BRAND & SHAPES)
+   ========================================= */
+/* Base Brand Button */
+.btn-brand {
+    background-color: var(--brand-primary);
+    color: var(--brand-white);
+    border: none;
+    padding: 10px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .btn-brand:hover {
+        background-color: var(--brand-secondary);
+    }
+
+/* Shape Utilities */
+.btn-rounded {
+    border-radius: 25px; /* Pill-shaped */
+}
+
+.btn-circle {
+    border-radius: 50%; /* Perfect circle */
+    width: 50px;
+    height: 50px;
+    padding: 0; /* Override padding for circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+   3. NAVIGATION COMPONENT
+   ========================================= */
+/* Normal Style */
+.nav-btn {
+    background-color: var(--brand-background);
+    color: var(--brand-text);
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.2s, color 0.2s; /* Smooth hover effect */
+}
+
+    /* MouseEnter / Hover Style */
+    .nav-btn:hover {
+        background-color: var(--brand-secondary);
+        color: var(--brand-white);
+    }
+
+    /* Active / MouseDown Style */
+    .nav-btn.active,
+    .nav-btn:active {
+        background-color: var(--brand-secondary);
+        color: var(--brand-white);
+        border: 3px solid var(--brand-white);
+    }
+
+/* =========================================
+   4. GRIDVIEW (DATATABLE) STYLES
+   ========================================= */
+/* Base GridView Style */
+.beautiful-grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+    /* Header Style */
+    .beautiful-grid th {
+        background-color: var(--brand-primary);
+        color: var(--brand-white);
+        font-weight: bold;
+        font-size: 16px;
+        padding: 12px;
+        text-align: left;
+        border-bottom: 2px solid lightgray;
+    }
+
+    /* Default Row Style */
+    .beautiful-grid td {
+        background-color: var(--brand-white);
+        color: var(--brand-text);
+        padding: 10px;
+        border-bottom: 1px solid lightgray;
+    }
+
+    /* Alternating Row Style */
+    .beautiful-grid tr.alt-row td {
+        background-color: var(--brand-background);
+    }
+
+    /* Hover/Selection Style */
+    .beautiful-grid tr:hover td {
+        background-color: var(--brand-text); /* Black/Dark Gray */
+        color: var(--brand-white);
+        cursor: pointer;
+    }
+
+/* Photo Column Image Sizing */
+.grid-photo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover; /* Stretches and fits nicely */
+    border-radius: 4px;
+}

@@ -1,0 +1,61 @@
+﻿using System;
+using System.Data;
+using MySql.Data.MySqlClient;
+
+
+
+// This One Connects With XAMMP VERSION ONLY and Not others like SQL 2012
+// Its Not Broken But Kept As An Alternative
+
+
+public class Database
+{
+    // =======================================================
+    // DATABASE CONFIGURATION 
+    // Hardcoded for survival mode. 
+    // =======================================================
+    private static readonly string dbServer = "127.0.0.1";
+    private static readonly string dbUser = "root";
+    private static readonly string dbPassword = "";
+    private static readonly string dbName = "inschool.db";
+
+    private static string ConnectionString
+    {
+        get
+        {
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder
+            {
+                Server = dbServer,
+                UserID = dbUser,
+                Password = dbPassword,
+                Database = dbName,
+                Pooling = true,
+                MinimumPoolSize = 0,
+                MaximumPoolSize = 50
+            };
+            return builder.ConnectionString;
+        }
+    }
+
+    /// <summary>
+    /// Instantiates and returns a brand-new, freshly opened connection object.
+    /// Wrap this inside a "using" block in your forms to ensure it closes automatically.
+    /// </summary>
+    public static MySqlConnection CreateOpenConnection()
+    {
+        MySqlConnection conn = new MySqlConnection(ConnectionString);
+        try
+        {
+            if (conn.State != ConnectionState.Open)
+            {
+                conn.Open();
+            }
+            return conn;
+        }
+        catch (MySqlException ex)
+        {
+            // Throws the error to the web page so it doesn't crash the IIS process
+            throw new Exception($"Database Connection Failure: {ex.Message}", ex);
+        }
+    }
+}
