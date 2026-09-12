@@ -1,7 +1,7 @@
 # 🏗️ System Architecture & Design
 
 
-![Preview](https://github.com/Mickekofi/ClassQuizManagementSystem/blob/master/AppImages/achitecture_image.png)
+![Preview](https://github.com/Mickekofi/ClassQuizManagementSystem/blob/master/AppImages/architecture_image.png)
 
 
 **InSchool Learning Management System — Technical Architecture Reference**

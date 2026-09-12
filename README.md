@@ -49,6 +49,12 @@
 
 ---
 
+
+**Questions?** Review:
+- [DATABASE.md](./DATABASE.md) — Complete database schema
+- [ARCHITECTURE.md](./ARCHITECTURE.md) — System design and workflows
+
+
 ## 🎯 Vision & Overview
 
 ### Problem Statement
