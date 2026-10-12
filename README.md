@@ -52,6 +52,9 @@
 
 **Questions?** Review:
 - [DATABASE.md](./DATABASE.md) — Complete database schema
+
+[![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/mickekofi/classquizmanagementsystem?utm_source=readme&utm_medium=badge)
+
 - [ARCHITECTURE.md](./ARCHITECTURE.md) — System design and workflows
 
 
