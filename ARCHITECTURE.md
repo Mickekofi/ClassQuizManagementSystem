@@ -30,6 +30,7 @@ Complete documentation of the system architecture, component design, data flows,
 
 ## 🎯 Architecture Overview
 
+```
 Directory structure:
 └── mickekofi-classquizmanagementsystem/
     ├── README.md
@@ -136,6 +137,7 @@ Directory structure:
             ├── SessionManager.cs
             └── Styles.css
 
+```
 
 ### System Type
 
