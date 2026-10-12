@@ -30,6 +30,113 @@ Complete documentation of the system architecture, component design, data flows,
 
 ## 🎯 Architecture Overview
 
+Directory structure:
+└── mickekofi-classquizmanagementsystem/
+    ├── README.md
+    ├── ARCHITECTURE.md
+    ├── Bundle.config
+    ├── DATABASE.md
+    ├── Global.asax
+    ├── Global.asax.cs
+    ├── InSchool.csproj
+    ├── InSchool.sln
+    ├── LICENSE
+    ├── Login.aspx
+    ├── Login.aspx.cs
+    ├── Login.aspx.designer.cs
+    ├── packages.config
+    ├── Site.Mobile.Master
+    ├── Site.Mobile.Master.cs
+    ├── Site.Mobile.Master.designer.cs
+    ├── ViewSwitcher.ascx
+    ├── ViewSwitcher.ascx.cs
+    ├── ViewSwitcher.ascx.designer.cs
+    ├── Web.config
+    ├── Web.Debug.config
+    ├── Web.Release.config
+    ├── App_Start/
+    │   ├── BundleConfig.cs
+    │   └── RouteConfig.cs
+    ├── Content/
+    │   ├── bootstrap-reboot.css
+    │   ├── bootstrap-reboot.rtl.css
+    │   └── Site.css
+    ├── Properties/
+    │   └── AssemblyInfo.cs
+    ├── Scripts/
+    │   └── WebForms/
+    │       ├── DetailsView.js
+    │       ├── Focus.js
+    │       ├── GridView.js
+    │       ├── Menu.js
+    │       ├── MenuStandards.js
+    │       ├── SmartNav.js
+    │       ├── TreeView.js
+    │       ├── WebForms.js
+    │       ├── WebParts.js
+    │       ├── WebUIValidation.js
+    │       └── MSAjax/
+    │           ├── MicrosoftAjaxApplicationServices.js
+    │           ├── MicrosoftAjaxComponentModel.js
+    │           ├── MicrosoftAjaxCore.js
+    │           ├── MicrosoftAjaxGlobalization.js
+    │           ├── MicrosoftAjaxHistory.js
+    │           ├── MicrosoftAjaxNetwork.js
+    │           ├── MicrosoftAjaxSerialization.js
+    │           ├── MicrosoftAjaxTimer.js
+    │           ├── MicrosoftAjaxWebForms.js
+    │           └── MicrosoftAjaxWebServices.js
+    └── src/
+        ├── Asserts/
+        │   ├── Book1.csv
+        │   └── DatabaseQuery.txt.txt
+        ├── Features/
+        │   ├── Admin/
+        │   │   ├── AdminActivity.Master
+        │   │   ├── AdminActivity.Master.cs
+        │   │   ├── AdminActivity.Master.designer.cs
+        │   │   ├── CreateCourse.aspx
+        │   │   ├── CreateCourse.aspx.cs
+        │   │   ├── CreateCourse.aspx.designer.cs
+        │   │   ├── CreateStudent.aspx
+        │   │   ├── CreateStudent.aspx.cs
+        │   │   ├── CreateStudent.aspx.designer.cs
+        │   │   ├── CreateTeacher.aspx
+        │   │   ├── CreateTeacher.aspx.cs
+        │   │   ├── CreateTeacher.aspx.designer.cs
+        │   │   ├── WebForm1.aspx
+        │   │   ├── WebForm1.aspx.cs
+        │   │   └── WebForm1.aspx.designer.cs
+        │   ├── Student/
+        │   │   ├── AvailableCourses.aspx
+        │   │   ├── AvailableCourses.aspx.cs
+        │   │   ├── AvailableCourses.aspx.designer.cs
+        │   │   ├── History.aspx
+        │   │   ├── History.aspx.cs
+        │   │   ├── History.aspx.designer.cs
+        │   │   ├── StudentActivity.Master
+        │   │   ├── StudentActivity.Master.cs
+        │   │   ├── StudentActivity.Master.designer.cs
+        │   │   ├── TakeQuize.aspx
+        │   │   ├── TakeQuize.aspx.cs
+        │   │   └── TakeQuize.aspx.designer.cs
+        │   └── Teacher/
+        │       ├── CreateQuize.aspx
+        │       ├── CreateQuize.aspx.cs
+        │       ├── CreateQuize.aspx.designer.cs
+        │       ├── QuizeStatistics.aspx
+        │       ├── QuizeStatistics.aspx.cs
+        │       ├── QuizeStatistics.aspx.designer.cs
+        │       ├── TeacherActivity.Master
+        │       ├── TeacherActivity.Master.cs
+        │       └── TeacherActivity.Master.designer.cs
+        └── Shared/
+            ├── Database.cs
+            ├── Database_XAMMP_VERSION.cs.txt
+            ├── SessionManager.cs
+            └── Styles.css
+
+
 ### System Type
 
 **Three-Tier Web Application for Online Quiz Management**
